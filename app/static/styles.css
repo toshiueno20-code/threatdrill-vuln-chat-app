@@ -1,0 +1,174 @@
+:root {
+  --bg: #0c1020;
+  --panel: rgba(255, 255, 255, 0.06);
+  --line: rgba(255, 255, 255, 0.12);
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.65);
+  --bad: #ff4d6d;
+  --ok: #4dd6b6;
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1000px 600px at 20% 10%, rgba(77, 214, 182, 0.16), transparent 55%),
+    radial-gradient(900px 550px at 80% 0%, rgba(255, 77, 109, 0.12), transparent 60%),
+    radial-gradient(900px 700px at 50% 90%, rgba(130, 87, 229, 0.12), transparent 60%),
+    var(--bg);
+}
+
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 26px 18px 42px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1) 55%, transparent 60%),
+    linear-gradient(135deg, rgba(77, 214, 182, 0.9), rgba(255, 77, 109, 0.9));
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+h1 {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: 0.2px;
+}
+.sub {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.badges { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.badge {
+  font-size: 12px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+}
+.badge.bad {
+  border-color: rgba(255, 77, 109, 0.35);
+  background: rgba(255, 77, 109, 0.12);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.panel {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.chat {
+  padding: 14px 14px 10px;
+  height: min(68vh, 560px);
+  overflow: auto;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.msg {
+  display: flex;
+  margin: 10px 0;
+}
+.msg.user { justify-content: flex-end; }
+.msg.sys { justify-content: center; }
+
+.bubble {
+  max-width: 78%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(12, 16, 32, 0.55);
+  color: var(--text);
+  line-height: 1.35;
+  word-break: break-word;
+}
+.msg.user .bubble {
+  background: rgba(77, 214, 182, 0.12);
+  border-color: rgba(77, 214, 182, 0.25);
+}
+.msg.assistant .bubble {
+  background: rgba(255, 255, 255, 0.05);
+}
+.msg.sys .bubble {
+  max-width: 92%;
+  color: var(--muted);
+  background: rgba(0, 0, 0, 0.20);
+}
+
+.composer {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+}
+
+textarea {
+  flex: 1;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--text);
+  padding: 10px 12px;
+  resize: vertical;
+  outline: none;
+}
+textarea:focus {
+  border-color: rgba(77, 214, 182, 0.40);
+  box-shadow: 0 0 0 3px rgba(77, 214, 182, 0.12);
+}
+
+button {
+  width: 110px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(135deg, rgba(255, 77, 109, 0.95), rgba(77, 214, 182, 0.90));
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 700;
+  cursor: pointer;
+}
+button:active { transform: translateY(1px); }
+
+.hint {
+  padding: 0 12px 14px;
+  color: var(--muted);
+  font-size: 12px;
+}
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95em;
+}
+
+@media (max-width: 520px) {
+  .top { flex-direction: column; align-items: flex-start; }
+  button { width: 92px; }
+  .bubble { max-width: 92%; }
+}
+
